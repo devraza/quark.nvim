@@ -1,11 +1,33 @@
 vim.g.mapleader = " " -- Set map leader
 
--- Setup neogit
-local neogit = require('neogit')
-neogit.setup {}
+-- Setup the package manager with plugins and configuration options
+require("lazy").setup({
+  -- Default theme
+  "devraza/kagayaki.nvim",
 
--- Setup better-escape.nvim
-require("better_escape").setup()
+  "folke/which-key.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+  "neovim/nvim-lspconfig",
+  "romgrk/barbar.nvim",
+  "nvim-lualine/lualine.nvim",
+  {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+  {
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+  "rktjmp/lush.nvim",
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  "nvim-tree/nvim-tree.lua",
+  "akinsho/toggleterm.nvim",
+})
 
 -- nvim-tree.lua setup
 vim.g.loaded_netrw = 1
