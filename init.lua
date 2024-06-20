@@ -27,6 +27,11 @@ require("lazy").setup({
   },
   "nvim-tree/nvim-tree.lua",
   "akinsho/toggleterm.nvim",
+  {
+    'kaarmu/typst.vim',
+    ft = 'typst',
+    lazy = false,
+  }
 })
 
 -- nvim-tree.lua setup
