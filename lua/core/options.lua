@@ -47,7 +47,7 @@ o.backup = false
 o.swapfile = false
 
 -- Font
-o.guifont = "ZedMono Nerd Font:h10.5"
+o.guifont = "ZedMono Nerd Font:h15"
 -- Colorscheme
 vim.cmd("colorscheme kagayaki")
 -- Transparent nontext
