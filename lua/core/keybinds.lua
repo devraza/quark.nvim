@@ -1,42 +1,29 @@
 local wk = require("which-key")
 
-wk.register({
-  f = {
-    name = "file",
-    f = { "<cmd>Telescope find_files<cr>", "Find File (~)" },
-    a = { "<cmd>Telescope find_files hidden=true search_dirs=~<cr>", "Find Hidden (~)" },
-    p = { "<cmd>Telescope find_files hidden=true<cr>", "Find File" },
-    g = { "<cmd>Telescope live_grep<cr>", "Find Word" },
-    s = { "<cmd>:w!<cr>", "Force Write" },
-    w = { "<cmd>:w<cr>", "Write" },
-
-    e = { ":e ", "Edit File", silent = false },
-  },
-  t = {
-    name = "tabs",
-    n = { "<cmd>tabnew<cr>", "New Tab" },
-    j = { "<cmd>BufferPrevious<cr>", "Previous" },
-    k = { "<cmd>BufferNext<cr>", "Next" },
-    h = { "<cmd>BufferMovePrevious<cr>", "Move Previous" },
-    l = { "<cmd>BufferMoveNext<cr>", "Move Next" },
-  },
-  b = {
-    name = "buffers",
-    d = { "<cmd>BufferDelete!<cr>", "Delete" },
-    c = { "<cmd>BufferClose!<cr>", "Close" },
-  },
-  r = {
-    name = "tree",
-    t = { "<cmd>NvimTreeToggle<cr>", "Toggle" },
-    f = { "<cmd>NvimTreeFocus<cr>", "Focus" },
-  },
-  g = {
-    name = "git",
-    g = { "<cmd>Neogit<cr>", "Neogit" },
-  },
-  e = {
-    name = "editor",
-    c = { "<cmd>noh<cr>", "Clear Search" },
-  },
-  ["."] = { ":e ", "Edit File", silent = false },
-}, { prefix = "<leader>" })
+wk.add({
+    { "<leader>.", ":e ", desc = "Edit File", silent = false },
+    { "<leader>b", group = "buffers" },
+    { "<leader>bc", "<cmd>BufferClose!<cr>", desc = "Close" },
+    { "<leader>bd", "<cmd>BufferDelete!<cr>", desc = "Delete" },
+    { "<leader>e", group = "editor" },
+    { "<leader>ec", "<cmd>noh<cr>", desc = "Clear Search" },
+    { "<leader>f", group = "file" },
+    { "<leader>fa", "<cmd>Telescope find_files hidden=true search_dirs=~<cr>", desc = "Find Hidden (~)" },
+    { "<leader>fe", ":e ", desc = "Edit File", silent = false },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File (~)" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find Word" },
+    { "<leader>fp", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find File" },
+    { "<leader>fs", "<cmd>:w!<cr>", desc = "Force Write" },
+    { "<leader>fw", "<cmd>:w<cr>", desc = "Write" },
+    { "<leader>g", group = "git" },
+    { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+    { "<leader>r", group = "tree" },
+    { "<leader>rf", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
+    { "<leader>rt", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
+    { "<leader>t", group = "tabs" },
+    { "<leader>th", "<cmd>BufferMovePrevious<cr>", desc = "Move Previous" },
+    { "<leader>tj", "<cmd>BufferPrevious<cr>", desc = "Previous" },
+    { "<leader>tk", "<cmd>BufferNext<cr>", desc = "Next" },
+    { "<leader>tl", "<cmd>BufferMoveNext<cr>", desc = "Move Next" },
+    { "<leader>tn", "<cmd>tabnew<cr>", desc = "New Tab" },
+})
