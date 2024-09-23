@@ -10,7 +10,15 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
+
+  -- Language servers
   "neovim/nvim-lspconfig",
+  "VonHeikemen/lsp-zero.nvim", branch = "v4.x",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/nvim-cmp",
+  "williamboman/mason.nvim",
+  'williamboman/mason-lspconfig.nvim',
+
   "romgrk/barbar.nvim",
   "nvim-lualine/lualine.nvim",
   {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
@@ -60,3 +68,28 @@ require("toggleterm").setup{
 
 -- Imports from files
 require 'core'
+
+-- Language server configuration
+require("mason").setup()
+require('mason-lspconfig').setup({
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
+})
+require('lspconfig').gopls.setup({})
+require('lspconfig').rust_analyzer.setup({})
+require('lsp-zero').setup_servers({'gopls', 'rust_analyzer'})
+local cmp = require('cmp')
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+  },
+  mapping = cmp.mapping.preset.insert({}),
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
+})
