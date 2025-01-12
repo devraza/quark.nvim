@@ -63,7 +63,7 @@ require("nvim-tree").setup({
 -- Toggleterm
 require("toggleterm").setup{
   open_mapping = [[<M-[>]],
-  shade_true = false,
+  direction = 'float',
 }
 
 -- Imports from files
